@@ -1,12 +1,46 @@
-# Input data
 
-Copy the provided `toy_instance.json`, `medium_instance.json`, and `large_instance.json` into `data/instances/`.
+# CompuOpti — Data Layer
 
-Before writing the parser:
-1. Inspect all three JSON files.
-2. Record their exact top-level keys and nested fields here.
-3. Check whether all instances share the same schema.
-4. Validate data types, index conventions (0-based vs 1-based), day horizon, qualification identifiers, and deadline units.
-5. Keep a normalized internal representation in `src/compuoti/data.py`.
+## Purpose
 
-Do not modify the original course files. Keep an untouched copy for reproducibility.
+This module loads and validates the JSON datasets used by
+the CompuOpti scheduling optimization model.
+
+## Available datasets
+
+| Dataset | Employees | Projects | Horizon |
+|---------|-----------|----------|---------|
+| Toy     | 3         | 5        | 5 days  |
+| Medium  | 5         | 15       | 22 days |
+| Large   | 6         | 25       | 36 days |
+
+## Data structures
+
+- Employee: ID, name, qualifications, vacation days.
+- Project: ID, name, gain, deadline, daily penalty,
+  and required person-days per qualification.
+- Instance: planning horizon, qualifications,
+  employees, and projects.
+
+## Main functions
+
+- `load_instance(path)`: reads a JSON file.
+- `instance_from_dict(raw)`: converts JSON data
+  into Python objects.
+- `validate_instance(instance)`: reports
+  structural and basic capacity problems.
+
+## Validation
+
+The loader checks required fields, qualifications,
+vacation days, deadlines, gains, penalties,
+and project requirements.
+
+Validation does not guarantee that a feasible
+schedule exists. Feasibility is determined by Gurobi.
+
+## Running tests
+
+```bash
+python -m pytest tests/test_data.py -v
+```
