@@ -1,5 +1,5 @@
 """MILP model for the CompuOpti employee/project scheduling problem."""
-
+from types import SimpleNamespace
 from dataclasses import dataclass
 from typing import Any
 
@@ -13,6 +13,58 @@ class ModelArtifacts:
     variables: dict[str, Any]
     instance: Any
 
+def _adapt_instance(instance):
+    """Convert the typed data-layer Instance into the MILP's dictionary interface."""
+
+    # Already in the MILP format (used by the existing unit tests).
+    if hasattr(instance, "employee_qualifications"):
+        return instance
+
+    employees = instance.employees
+    projects = instance.projects
+
+    return SimpleNamespace(
+        days=list(instance.days),
+        employees=list(instance.employee_ids),
+        projects=list(instance.project_ids),
+        qualifications=list(instance.qualifications),
+
+        employee_qualifications={
+            employee.id: set(employee.qualifications)
+            for employee in employees
+        },
+
+        leave_days={
+            employee.id: set(employee.vacations)
+            for employee in employees
+        },
+
+        required_qualifications={
+            project.id: set(project.requirements)
+            for project in projects
+        },
+
+        required_person_days={
+            (project.id, qualification): number_of_days
+            for project in projects
+            for qualification, number_of_days in project.requirements.items()
+        },
+
+        gain={
+            project.id: project.gain
+            for project in projects
+        },
+
+        late_penalty={
+            project.id: project.daily_penalty
+            for project in projects
+        },
+
+        deadline={
+            project.id: project.due_date
+            for project in projects
+        },
+    )
 
 def build_model(instance, objective: str = "financial") -> ModelArtifacts:
     """
@@ -34,6 +86,8 @@ def build_model(instance, objective: str = "financial") -> ModelArtifacts:
     Invalid assignments (unqualified employees and leave days) are
     excluded when creating X variables.
     """
+
+    instance = _adapt_instance(instance)
 
     days = instance.days
     employees = instance.employees
