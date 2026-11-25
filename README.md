@@ -38,7 +38,6 @@ compuoti/
 ├── results/                    # Pareto JSON outputs and summaries
 ├── src/compuoti/
 │   ├── data.py                  # Data loading and validation
-│   ├── generate.py              # Synthetic instance generator
 │   ├── model.py                 # MILP model and objective definitions
 │   ├── solve.py                 # Single-objective solver and export
 │   ├── multiobjective.py        # ε-constraint optimization
