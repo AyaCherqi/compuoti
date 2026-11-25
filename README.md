@@ -12,7 +12,6 @@ CompuOpti selects projects and assigns qualified employees to project tasks over
 - Four optimization criteria
 - ε-constraint search and Pareto dominance filtering
 - JSON exports and readable result summaries
-- Synthetic instance generation
 - Streamlit dashboard for objective-space and schedule visualizations
 
 ## Optimization objectives
