@@ -1,124 +1,138 @@
 # CompuOpti
 
-Multi-objective project selection and employee scheduling using Mixed-Integer Linear Programming (MILP), Gurobi, and the epsilon-constraint method.
+Multi-objective project selection and employee scheduling using Python, Gurobi, and the ε-constraint method.
 
-## Project status
+CompuOpti selects projects and assigns qualified employees to project tasks over a fixed planning horizon. The optimization balances net profit, project completion dates, employee–project relationships, and late deliveries.
 
-Early development: repository structure and implementation interfaces are prepared. The mathematical formulation and JSON data adapter must be validated against the course specification before solving.
+## Features
 
-## Objectives (to confirm with the project team)
+- Mixed-integer linear programming (MILP) model with optional project selection
+- Employee skill, daily capacity, and vacation constraints
+- Project qualification coverage and deadline penalties
+- Four optimization criteria
+- ε-constraint search and Pareto dominance filtering
+- JSON exports and readable result summaries
+- Synthetic instance generation
+- Streamlit dashboard for objective-space and schedule visualizations
 
-1. Maximize financial performance: project gains minus delay penalties.
-2. Minimize portfolio makespan (or another agreed completion-time measure).
-3. Minimize employee–project relationships.
-4. Minimize the number of late projects.
+## Optimization objectives
 
-The last three objectives are multi-objective extensions. Confirm the exact interpretation with the professor/team before treating them as final.
+| Objective | Direction | Definition |
+| --- | --- | --- |
+| `financial` | Maximize | Total gains from completed projects minus lateness penalties |
+| `completion` | Minimize | Sum of completion-day indices of selected projects |
+| `relationships` | Minimize | Number of distinct employee–project assignments |
+| `late_projects` | Minimize | Number of projects delivered late |
 
-## Repository structure
+The model supports rejecting projects when staffing capacity is insufficient. The multi-objective solver maximizes `financial` subject to varying bounds on the other three criteria, then filters dominated results. The reported Pareto set is sampled, not an exhaustive enumeration.
+
+## Project structure
 
 ```text
 compuoti/
-├── app.py
+├── app.py                       # Streamlit results dashboard
+├── show_pareto_summary.py      # Compact results summaries
 ├── data/
-│   ├── README.md
-│   └── instances/          # Put toy/medium/large JSON instances here
-├── docs/
-│   ├── mathematical_model.md
-│   └── decisions.md
-├── notebooks/
-├── outputs/                # Generated results (not committed)
+│   ├── instances/              # Toy, medium, and large JSON instances
+│   └── README.md               # Dataset schema
+├── results/                    # Pareto JSON outputs and summaries
 ├── src/compuoti/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── data.py
-│   ├── model.py
-│   ├── solve.py
-│   └── pareto.py
-├── tests/
-│   ├── conftest.py
-│   ├── test_data.py
-│   └── test_model.py
-├── .env.example
-├── .gitignore
+│   ├── data.py                  # Data loading and validation
+│   ├── generate.py              # Synthetic instance generator
+│   ├── model.py                 # MILP model and objective definitions
+│   ├── solve.py                 # Single-objective solver and export
+│   ├── multiobjective.py        # ε-constraint optimization
+│   └── pareto.py                # Dominance and Pareto filtering
+├── tests/                       # Automated tests
 ├── pyproject.toml
 └── requirements.txt
 ```
 
-## Setup
+## Requirements
 
-### 1. Requirements
+- Python 3.10+
+- Gurobi Optimizer with a valid license
 
-- Python 3.10 or newer
-- Git
-- A Gurobi installation and a valid academic license for optimization runs
+## Installation
 
-### 2. Create and activate a virtual environment
+### Windows (PowerShell)
 
-**macOS/Linux**
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-**Windows PowerShell**
 ```powershell
 py -m venv .venv
 .venv\Scripts\Activate.ps1
-```
-
-### 3. Install dependencies
-
-```bash
 python -m pip install --upgrade pip
-pip install -r requirements.txt
-pip install -e .
+python -m pip install -e ".[dev,dashboard]"
 ```
 
-If Gurobi is not yet available, install the Python package with `pip install gurobipy`, then configure and test your academic license according to Gurobi's official instructions. A package installation alone does not provide a solver license.
-
-### 4. Add the supplied instances
-
-Copy the course-provided files into `data/instances/` and use these names:
-
-- `toy_instance.json`
-- `medium_instance.json`
-- `large_instance.json`
-
-Do not commit private, licensed, or restricted data. These sample files are normally fine for a course repository, but check your course rules first.
-
-### 5. Inspect the data
+### macOS / Linux
 
 ```bash
-python -m compuoti.solve --instance data/instances/toy_instance.json --validate-only
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e '.[dev,dashboard]'
 ```
 
-The JSON adapter is intentionally a TODO until its schema has been checked. Do not guess key names: document the real schema in `data/README.md`.
+## Usage
 
-### 6. Run tests
+### Single-objective optimization
 
 ```bash
-pytest
+python -m compuoti.solve --instance data/instances/toy_instance.json --objective financial --output results/toy_single.json
 ```
 
-### 7. Run the application (starter)
+Available objectives: `financial`, `completion`, `relationships`, `late_projects`.
+
+### Multi-objective optimization
+
+```bash
+python -m compuoti.multiobjective --instance data/instances/toy_instance.json --grid-levels 3 --min-selected 1 --output results/toy_pareto.json
+```
+
+`--grid-levels` controls the number of ε values explored per constrained objective. `--min-selected 1` requires at least one completed project; omit it to allow an empty project portfolio.
+
+### Results summaries
+
+```bash
+python show_pareto_summary.py --results results/toy_pareto.json
+python show_pareto_summary.py --results results/medium_pareto.json
+python show_pareto_summary.py --results results/large_pareto.json
+```
+
+### Dashboard
 
 ```bash
 streamlit run app.py
 ```
 
-## Mathematical model
+The dashboard displays objective trade-offs, selected projects, deadlines, and employee assignments by day.
 
-Read [`docs/mathematical_model.md`](docs/mathematical_model.md). It records the current candidate notation and explicitly flags decisions that still need validation.
+### Generate a dataset
 
-## Team workflow
+```bash
+python -m compuoti.generate --employees 5 --projects 15 --horizon 22 --skills 5 --seed 42 --output data/generated/benchmark_42.json
+```
 
-- `main`: stable, reviewed code.
-- `dev`: integration branch (optional for a small team).
-- Feature branches: `feature/data-loader`, `feature/milp-model`, `feature/pareto`, `feature/dashboard`.
-- Open a Pull Request for changes to `main`.
-- Add tests with each feature; do not commit `.env`, virtual environments, solver logs, or generated outputs.
+### Run tests
 
-## Reproducibility
+```bash
+python -m pytest -v
+```
 
-Record the instance name, solver status, objective values, solver version, runtime, and model settings for every experiment. Store generated schedules under `outputs/` locally; commit only small, anonymized result summaries when appropriate.
+## Output format
+
+Multi-objective runs write a JSON file containing ε-grid statistics and a list of sampled nondominated solutions. Each solution includes:
+
+- `objective_values`: net profit, completion score, relationship count, and late-project count
+- `projects`: selected projects, completion dates, lateness, and assigned employees
+- `assignments`: employee, project, qualification, and workday
+
+The `financial` value is net profit after late penalties. The `completion` value is the sum of project completion-day indices, **not** elapsed project duration or overall makespan.
+
+## Datasets
+
+The repository includes the original toy, medium, and large JSON instances. Additional instances can be generated with a fixed random seed for reproducible experiments.
+
+## License
+
+Gurobi is a separately licensed dependency. Use is subject to the terms of the installed Gurobi license.
