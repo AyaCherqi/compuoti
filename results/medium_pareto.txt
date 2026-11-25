@@ -1,0 +1,54 @@
+COMPUOPTI — MEDIUM DATASET: PARETO SUMMARY
+======================================================================
+Epsilon combinations checked: 27
+Feasible combinations: 12
+Infeasible combinations: 15
+Sampled nondominated solutions: 2
+
+Note: Financial = total gain of selected projects - late penalties.
+Completion = sum of completion-day values (not calendar duration).
+Relationships = distinct employee/project pairs.
+
+SOLUTION 1
+----------------------------------------------------------------------
+Net profit:         413.00
+Gross project gain: 425.00
+Late penalties:     12.00
+Completion score:   157
+Relationships:      25
+Late projects:      3
+Selected projects:  Job1, Job3, Job4, Job5, Job6, Job7, Job9, Job12, Job13, Job14, Job15
+Project details:
+  - Job1: finish day 21, late 1 day(s), employees: Emma, Olivia
+  - Job3: finish day 11, late 0 day(s), employees: Olivia
+  - Job4: finish day 17, late 0 day(s), employees: Olivia
+  - Job5: finish day 7, late 0 day(s), employees: Emma, Liam, Noah, Olivia
+  - Job6: finish day 16, late 0 day(s), employees: Liam
+  - Job7: finish day 22, late 2 day(s), employees: Amelia, Liam, Noah
+  - Job9: finish day 19, late 1 day(s), employees: Amelia, Emma, Liam, Noah
+  - Job12: finish day 11, late 0 day(s), employees: Amelia, Emma
+  - Job13: finish day 13, late 0 day(s), employees: Amelia, Noah
+  - Job14: finish day 4, late 0 day(s), employees: Amelia, Noah
+  - Job15: finish day 16, late 0 day(s), employees: Amelia, Emma, Noah
+
+SOLUTION 2
+----------------------------------------------------------------------
+Net profit:         400.00
+Gross project gain: 400.00
+Late penalties:     0.00
+Completion score:   135
+Relationships:      22
+Late projects:      0
+Selected projects:  Job1, Job3, Job4, Job5, Job6, Job7, Job12, Job13, Job14, Job15
+Project details:
+  - Job1: finish day 20, late 0 day(s), employees: Emma, Liam, Olivia
+  - Job3: finish day 11, late 0 day(s), employees: Olivia
+  - Job4: finish day 17, late 0 day(s), employees: Olivia
+  - Job5: finish day 7, late 0 day(s), employees: Emma, Liam, Noah, Olivia
+  - Job6: finish day 16, late 0 day(s), employees: Liam
+  - Job7: finish day 20, late 0 day(s), employees: Amelia, Liam, Noah
+  - Job12: finish day 11, late 0 day(s), employees: Amelia, Emma
+  - Job13: finish day 13, late 0 day(s), employees: Amelia, Noah
+  - Job14: finish day 4, late 0 day(s), employees: Amelia, Noah
+  - Job15: finish day 16, late 0 day(s), employees: Amelia, Emma, Noah
+

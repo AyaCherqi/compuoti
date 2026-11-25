@@ -1,5 +1,9 @@
+"""Single-objective solving, solution extraction, and JSON export.
 
-"""Solver execution, solution extraction, and JSON export for CompuOpti."""
+Unlike the previous version, no second-stage completion-time optimization is
+needed: model.py now defines completion dates exactly for every feasible
+schedule. The four-objective epsilon-constraint search is in multiobjective.py.
+"""
 
 from __future__ import annotations
 
@@ -11,125 +15,31 @@ from typing import Any
 from gurobipy import GRB
 
 from .data import load_instance, validate_instance
-from .model import build_model
-
-
-OBJECTIVES = (
-    "financial",
-    "completion",
-    "relationships",
-    "late_projects",
-)
+from .model import OBJECTIVES, build_model
 
 
 def calculate_objective_values(artifacts: Any) -> dict[str, float]:
-    """Calculate all four objective values from an optimized model."""
-
-    variables = artifacts.variables
+    """Calculate the four objective values of the current feasible solution."""
+    v = artifacts.variables
     instance = artifacts.instance
-
-    financial = sum(
-        instance.gain[j] * variables["Y"][j].X
-        - instance.late_penalty[j] * variables["L"][j].X
-        for j in instance.projects
-    )
-
-    completion = sum(
-        variables["E"][j].X
-        for j in instance.projects
-    )
-
-    relationships = sum(
-        variables["Z"][i, j].X
-        for i in instance.employees
-        for j in instance.projects
-    )
-
-    late_projects = sum(
-        variables["W"][j].X
-        for j in instance.projects
-    )
-
     return {
-        "financial": float(financial),
-        "completion": float(completion),
-        "relationships": float(relationships),
-        "late_projects": float(late_projects),
-    }
-
-
-def extract_solution(
-    artifacts: Any,
-    original_instance: Any,
-    objective: str,
-    primary_status: int,
-    secondary_status: int | None,
-) -> dict[str, Any]:
-    """Extract assignments, project schedules, and objective values."""
-
-    variables = artifacts.variables
-
-    employees = {
-        employee.id: employee
-        for employee in original_instance.employees
-    }
-
-    projects = {
-        project.id: project
-        for project in original_instance.projects
-    }
-
-    assignments = []
-
-    for (employee_id, project_id, qualification, day), variable in (
-        variables["X"].items()
-    ):
-        if variable.X > 0.5:
-            assignments.append({
-                "employee_id": employee_id,
-                "employee_name": employees[employee_id].name,
-                "project_id": project_id,
-                "project_name": projects[project_id].name,
-                "qualification": qualification,
-                "day": day,
-            })
-
-    project_schedules = []
-
-    for project_id, project in projects.items():
-        completion_day = int(round(variables["E"][project_id].X))
-        late_days = int(round(variables["L"][project_id].X))
-        is_late = variables["W"][project_id].X > 0.5
-
-        assigned_employees = sorted({
-            assignment["employee_name"]
-            for assignment in assignments
-            if assignment["project_id"] == project_id
-        })
-
-        project_schedules.append({
-            "project_id": project_id,
-            "project_name": project.name,
-            "due_date": project.due_date,
-            "completion_day": completion_day,
-            "late_days": late_days,
-            "is_late": is_late,
-            "assigned_employees": assigned_employees,
-        })
-
-    return {
-        "objective_selected": objective,
-        "primary_solver_status": primary_status,
-        "secondary_solver_status": secondary_status,
-        "objective_values": calculate_objective_values(artifacts),
-        "assignments": assignments,
-        "projects": project_schedules,
+        "financial": float(sum(
+            instance.gain[j] * v["Y"][j].X
+            - instance.late_penalty[j] * v["L"][j].X
+            for j in instance.projects
+        )),
+        "completion": float(sum(v["E"][j].X for j in instance.projects)),
+        "relationships": float(sum(
+            v["Z"][i, j].X
+            for i in instance.employees
+            for j in instance.projects
+        )),
+        "late_projects": float(sum(v["W"][j].X for j in instance.projects)),
     }
 
 
 def status_name(status: int) -> str:
-    """Convert a Gurobi status code into a readable name."""
-
+    """Convert common Gurobi status codes to readable names."""
     names = {
         GRB.OPTIMAL: "OPTIMAL",
         GRB.INFEASIBLE: "INFEASIBLE",
@@ -140,8 +50,95 @@ def status_name(status: int) -> str:
         GRB.SUBOPTIMAL: "SUBOPTIMAL",
         GRB.NUMERIC: "NUMERIC",
     }
-
     return names.get(status, f"OTHER_STATUS_{status}")
+
+
+def extract_solution(
+    artifacts: Any,
+    original_instance: Any,
+    objective: str,
+    primary_status: int,
+    secondary_status: int | None = None,
+) -> dict[str, Any]:
+    """Extract a schedule, supporting typed and normalized instances."""
+    v = artifacts.variables
+    inst = artifacts.instance
+
+    # Typed data.Instance objects have employee/project objects with names;
+    # legacy SimpleNamespace test fixtures have string IDs instead.
+    employee_names = {}
+    if hasattr(original_instance, "employees"):
+        for item in original_instance.employees:
+            key = getattr(item, "id", item)
+            employee_names[key] = str(getattr(item, "name", key))
+    project_names = {}
+    if hasattr(original_instance, "projects"):
+        for item in original_instance.projects:
+            key = getattr(item, "id", item)
+            project_names[key] = str(getattr(item, "name", key))
+
+    assignments = []
+    for (i, j, k, t), var in v["X"].items():
+        if var.X > 0.5:
+            assignments.append({
+                "employee_id": i,
+                "employee_name": employee_names.get(i, str(i)),
+                "project_id": j,
+                "project_name": project_names.get(j, str(j)),
+                "qualification": k,
+                "day": t,
+            })
+    assignments.sort(
+        key=lambda x: (
+            x["day"], str(x["employee_id"]),
+            str(x["project_id"]), str(x["qualification"])
+        )
+    )
+
+    schedules = []
+    for j in inst.projects:
+        selected = bool(v["Y"][j].X > 0.5)
+        assigned_employees = sorted({
+            row["employee_name"]
+            for row in assignments if row["project_id"] == j
+        })
+        schedules.append({
+            "project_id": j,
+            "project_name": project_names.get(j, str(j)),
+            "selected": selected,
+            "due_date": inst.deadline[j],
+            "completion_day": int(round(v["E"][j].X)),
+            "late_days": int(round(v["L"][j].X)),
+            "is_late": bool(v["W"][j].X > 0.5),
+            "assigned_employees": assigned_employees,
+        })
+
+    return {
+        "objective_selected": objective,
+        "primary_solver_status": primary_status,
+        "secondary_solver_status": secondary_status,
+        "objective_values": calculate_objective_values(artifacts),
+        "assignments": assignments,
+        "projects": schedules,
+        "selected_project_count": sum(p["selected"] for p in schedules),
+    }
+
+
+def _empty_result(objective: str, status: int) -> dict[str, Any]:
+    """Return a consistent result when no feasible schedule was found."""
+    return {
+        "objective_selected": objective,
+        "status": status,
+        "status_name": status_name(status),
+        "primary_solver_status": status,
+        "secondary_solver_status": None,
+        "primary_objective_value": None,
+        "optimality_proven": False,
+        "objective_values": None,
+        "assignments": [],
+        "projects": [],
+        "selected_project_count": 0,
+    }
 
 
 def solve_instance(
@@ -150,202 +147,99 @@ def solve_instance(
     time_limit: float | None = None,
     mip_gap: float | None = None,
     verbose: bool = False,
+    min_selected_projects: int = 0,
 ) -> dict[str, Any]:
-    """
-    Optimize an instance using two-stage lexicographic optimization.
+    """Optimize one objective and return the full four-objective evaluation.
 
-    Stage 1 optimizes the selected primary objective.
-    Stage 2 minimizes total completion time without worsening
-    the primary objective beyond a small numerical tolerance.
+    With optional projects, standalone minimization can legitimately choose
+    no projects. Set min_selected_projects=1 to exclude the empty portfolio
+    when that is a desired *additional* business rule.
     """
-
     if objective not in OBJECTIVES:
         raise ValueError(
-            f"Unknown objective '{objective}'. "
-            f"Choose from: {', '.join(OBJECTIVES)}."
+            f"Unknown objective '{objective}'. Choose from: {', '.join(OBJECTIVES)}."
         )
+    if time_limit is not None and time_limit <= 0:
+        raise ValueError("time_limit must be positive.")
+    if mip_gap is not None and not 0 <= mip_gap <= 1:
+        raise ValueError("mip_gap must be between 0 and 1.")
+    if (
+        isinstance(min_selected_projects, bool)
+        or not isinstance(min_selected_projects, int)
+        or min_selected_projects < 0
+    ):
+        raise ValueError("min_selected_projects must be a non-negative integer.")
 
     artifacts = build_model(instance, objective=objective)
     model = artifacts.model
-
     try:
+        if min_selected_projects > len(artifacts.instance.projects):
+            raise ValueError("min_selected_projects exceeds the number of projects.")
+
         model.Params.OutputFlag = 1 if verbose else 0
-
         if time_limit is not None:
-            if time_limit <= 0:
-                raise ValueError("time_limit must be positive.")
             model.Params.TimeLimit = time_limit
-
         if mip_gap is not None:
-            if mip_gap < 0:
-                raise ValueError("mip_gap cannot be negative.")
             model.Params.MIPGap = mip_gap
 
-        # =================================================
-        # STAGE 1: Optimize the selected primary objective
-        # =================================================
-
-        model.optimize()
-
-        primary_status = model.Status
-
-        if model.SolCount == 0:
-            return {
-                "objective_selected": objective,
-                "status": primary_status,
-                "status_name": status_name(primary_status),
-                "primary_solver_status": primary_status,
-                "secondary_solver_status": None,
-                "objective_values": None,
-                "assignments": [],
-                "projects": [],
-            }
-
-        # Capture the objective expression and value
-        # after the first optimization.
-        primary_expression = model.getObjective()
-        primary_value = model.ObjVal
-
-        # =================================================
-        # STAGE 2: Preserve primary objective and minimize
-        # total project completion time
-        # =================================================
-
-        tolerance = 1e-6
-
-        if objective == "financial":
+        if min_selected_projects:
+            from gurobipy import quicksum
             model.addConstr(
-                primary_expression >= primary_value - tolerance,
-                name="fix_primary_objective",
-            )
-        else:
-            model.addConstr(
-                primary_expression <= primary_value + tolerance,
-                name="fix_primary_objective",
+                quicksum(artifacts.variables["Y"].values()) >= min_selected_projects,
+                name="minimum_selected_projects",
             )
 
-        total_completion_time = sum(
-            artifacts.variables["E"][j]
-            for j in artifacts.instance.projects
-        )
-
-        model.setObjective(total_completion_time, GRB.MINIMIZE)
-
         model.optimize()
-
-        secondary_status = model.Status
-
+        status = model.Status
         if model.SolCount == 0:
-            return {
-                "objective_selected": objective,
-                "status": secondary_status,
-                "status_name": status_name(secondary_status),
-                "primary_solver_status": primary_status,
-                "secondary_solver_status": secondary_status,
-                "primary_objective_value": float(primary_value),
-                "objective_values": None,
-                "assignments": [],
-                "projects": [],
-                "error": "Stage 2 did not find a feasible solution.",
-            }
-
-        # =================================================
-        # EXTRACT FINAL SOLUTION
-        # =================================================
+            return _empty_result(objective, status)
 
         result = extract_solution(
-            artifacts,
-            instance,
-            objective,
-            primary_status,
-            secondary_status,
+            artifacts, instance, objective,
+            primary_status=status, secondary_status=None
         )
-
-        result["status"] = secondary_status
-        result["status_name"] = status_name(secondary_status)
-        result["primary_objective_value"] = float(primary_value)
-
+        result.update({
+            "status": status,
+            "status_name": status_name(status),
+            "primary_objective_value": float(model.ObjVal),
+            "optimality_proven": status == GRB.OPTIMAL,
+        })
         return result
-
     finally:
         model.dispose()
 
 
-def export_solution(
-    result: dict[str, Any],
-    output_path: str | Path,
-) -> Path:
-    """Export a solver result to a JSON file."""
-
+def export_solution(result: dict[str, Any], output_path: str | Path) -> Path:
+    """Save a solver result as JSON."""
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
-
     with path.open("w", encoding="utf-8") as file:
         json.dump(result, file, indent=4, ensure_ascii=False)
-
     return path
 
 
 def main() -> None:
-    """Command-line interface for running CompuOpti."""
-
+    """Run a single objective from the command line."""
     parser = argparse.ArgumentParser(
-        description="Run CompuOpti employee/project scheduling optimization."
+        description="Solve one CompuOpti objective on a course JSON instance."
     )
-
+    parser.add_argument("--instance", required=True, help="Path to an instance JSON.")
+    parser.add_argument("--objective", choices=OBJECTIVES, default="financial")
+    parser.add_argument("--output", default="results/solution.json")
+    parser.add_argument("--time-limit", type=float, default=None)
+    parser.add_argument("--mip-gap", type=float, default=None)
     parser.add_argument(
-        "--instance",
-        required=True,
-        help="Path to the JSON instance.",
+        "--min-selected", type=int, default=0,
+        help="Additional business rule: minimum number of projects (default 0).",
     )
-
-    parser.add_argument(
-        "--objective",
-        choices=OBJECTIVES,
-        default="financial",
-        help="Objective to optimize (default: financial).",
-    )
-
-    parser.add_argument(
-        "--output",
-        default="results/solution.json",
-        help="Path where the solution JSON will be saved.",
-    )
-
-    parser.add_argument(
-        "--time-limit",
-        type=float,
-        default=None,
-        help="Optional solver time limit in seconds per optimization stage.",
-    )
-
-    parser.add_argument(
-        "--mip-gap",
-        type=float,
-        default=None,
-        help="Optional relative MIP optimality gap.",
-    )
-
-    parser.add_argument(
-        "--verbose",
-        action="store_true",
-        help="Display Gurobi optimization logs.",
-    )
-
+    parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
 
     try:
         instance = load_instance(args.instance)
-
         errors = validate_instance(instance)
-
         if errors:
-            for error in errors:
-                print(f"ERROR: {error}")
-            raise SystemExit(1)
-
-        print(f"Loaded instance: {instance.source}")
-        print(f"Selected objective: {args.objective}")
+            parser.error("; ".join(errors))
 
         result = solve_instance(
             instance,
@@ -353,23 +247,23 @@ def main() -> None:
             time_limit=args.time_limit,
             mip_gap=args.mip_gap,
             verbose=args.verbose,
+            min_selected_projects=args.min_selected,
         )
-
         print(f"Solver status: {result['status_name']}")
-
         if result["objective_values"] is None:
-            print("No feasible solution was found.")
+            print("No feasible schedule found.")
             raise SystemExit(1)
 
-        output_path = export_solution(result, args.output)
-
-        print("\nObjective values:")
-
+        destination = export_solution(result, args.output)
         for name, value in result["objective_values"].items():
             print(f"  {name}: {value:.2f}")
-
-        print(f"\nSolution exported to: {output_path}")
-
+        print(
+            f"Selected projects: "
+            f"{result['selected_project_count']}/{len(result['projects'])}"
+        )
+        if not result["optimality_proven"]:
+            print("Warning: feasible incumbent, optimality not established.")
+        print(f"Saved to: {destination}")
     except (ValueError, FileNotFoundError) as error:
         parser.error(str(error))
 

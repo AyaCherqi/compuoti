@@ -1,0 +1,55 @@
+COMPUOPTI — TOY DATASET: PARETO SUMMARY
+======================================================================
+Epsilon combinations checked: 27
+Feasible combinations: 12
+Infeasible combinations: 15
+Sampled nondominated solutions: 3
+
+Note: Financial = total gain of selected projects - late penalties.
+Completion = sum of completion-day values (not calendar duration).
+Relationships = distinct employee/project pairs.
+
+SOLUTION 1
+----------------------------------------------------------------------
+Net profit:         65.00
+Gross project gain: 65.00
+Late penalties:     0.00
+Completion score:   14
+Relationships:      7
+Late projects:      0
+Selected projects:  Job1, Job3, Job4, Job5
+Project details:
+  - Job1: finish day 3, late 0 day(s), employees: Liam, Olivia
+  - Job3: finish day 4, late 0 day(s), employees: Emma, Liam
+  - Job4: finish day 2, late 0 day(s), employees: Emma, Olivia
+  - Job5: finish day 5, late 0 day(s), employees: Olivia
+
+SOLUTION 2
+----------------------------------------------------------------------
+Net profit:         59.00
+Gross project gain: 65.00
+Late penalties:     6.00
+Completion score:   13
+Relationships:      7
+Late projects:      1
+Selected projects:  Job1, Job3, Job4, Job5
+Project details:
+  - Job1: finish day 3, late 0 day(s), employees: Liam, Olivia
+  - Job3: finish day 4, late 0 day(s), employees: Emma, Liam
+  - Job4: finish day 5, late 2 day(s), employees: Olivia
+  - Job5: finish day 1, late 0 day(s), employees: Emma, Olivia
+
+SOLUTION 3
+----------------------------------------------------------------------
+Net profit:         55.00
+Gross project gain: 55.00
+Late penalties:     0.00
+Completion score:   9
+Relationships:      6
+Late projects:      0
+Selected projects:  Job1, Job3, Job4
+Project details:
+  - Job1: finish day 3, late 0 day(s), employees: Liam, Olivia
+  - Job3: finish day 4, late 0 day(s), employees: Emma, Liam
+  - Job4: finish day 2, late 0 day(s), employees: Emma, Olivia
+

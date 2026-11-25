@@ -5,6 +5,8 @@ import pytest
 
 from compuoti.model import build_model
 
+from gurobipy import GRB
+
 
 @pytest.fixture
 def sample_instance():
@@ -69,17 +71,21 @@ def test_incompatible_and_leave_assignments_are_excluded(sample_instance):
         artifacts.model.dispose()
 
 
-def test_projects_are_mandatory(sample_instance):
+
+def test_projects_are_optional(sample_instance):
     artifacts = build_model(sample_instance)
 
     try:
         y = artifacts.variables["Y"]["Project1"]
 
-        assert y.LB == 1
+        # A project can be rejected or selected.
+        assert y.LB == 0
         assert y.UB == 1
+        assert y.VType == GRB.BINARY
 
     finally:
         artifacts.model.dispose()
+
 
 
 def test_all_four_objectives_are_available(sample_instance):
@@ -112,3 +118,69 @@ def test_invalid_objective_raises_error(sample_instance):
 
     finally:
         artifacts.model.dispose()
+
+
+def test_rejected_project_has_no_work(sample_instance):
+    artifacts = build_model(sample_instance, objective="financial")
+
+    try:
+        model = artifacts.model
+        variables = artifacts.variables
+        j = "Project1"
+
+        # Force the project to be rejected.
+        variables["Y"][j].LB = 0
+        variables["Y"][j].UB = 0
+
+        model.optimize()
+
+        assert model.Status == GRB.OPTIMAL
+
+        # Rejected projects have no completion or lateness.
+        assert variables["E"][j].X == pytest.approx(0)
+        assert variables["L"][j].X == pytest.approx(0)
+        assert variables["W"][j].X == pytest.approx(0)
+
+        # No assignments are allowed for a rejected project.
+        for (i, project, k, t), x in variables["X"].items():
+            if project == j:
+                assert x.X == pytest.approx(0)
+
+    finally:
+        artifacts.model.dispose()
+
+
+def test_selected_project_covers_requirements(sample_instance):
+    artifacts = build_model(sample_instance, objective="financial")
+
+    try:
+        model = artifacts.model
+        variables = artifacts.variables
+        j = "Project1"
+
+        # Force the project to be selected.
+        variables["Y"][j].LB = 1
+        variables["Y"][j].UB = 1
+
+        model.optimize()
+
+        assert model.Status == GRB.OPTIMAL
+
+        for qualification in sample_instance.required_qualifications[j]:
+            assigned_days = sum(
+                x.X
+                for (i, project, k, t), x in variables["X"].items()
+                if project == j and k == qualification
+            )
+
+            required_days = sample_instance.required_person_days[
+                j, qualification
+            ]
+
+            assert assigned_days == pytest.approx(required_days)
+
+        assert variables["E"][j].X >= 1
+
+    finally:
+        artifacts.model.dispose()
+
