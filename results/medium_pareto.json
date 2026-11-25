@@ -1,0 +1,2361 @@
+{
+    "method": "epsilon_constraint",
+    "primary_objective": "financial",
+    "minimized_objectives": [
+        "completion",
+        "relationships",
+        "late_projects"
+    ],
+    "min_selected_projects": 1,
+    "grid_levels": 3,
+    "epsilon_grid": {
+        "completion": [
+            0,
+            165,
+            330
+        ],
+        "relationships": [
+            0,
+            38,
+            75
+        ],
+        "late_projects": [
+            0,
+            8,
+            15
+        ]
+    },
+    "total_grid_combinations": 27,
+    "attempted_combinations": 27,
+    "successful_combinations": 12,
+    "infeasible_combinations": 15,
+    "incomplete_combinations": 0,
+    "number_of_gurobi_optimizations": 63,
+    "search_complete": true,
+    "all_refinements_zero_gap": true,
+    "frontier_is_sampled": true,
+    "candidate_count": 12,
+    "nondominated_count": 2,
+    "solutions": [
+        {
+            "objective_selected": "financial",
+            "primary_solver_status": 2,
+            "secondary_solver_status": 2,
+            "objective_values": {
+                "financial": 413.0,
+                "completion": 157.0,
+                "relationships": 25.0,
+                "late_projects": 3.0
+            },
+            "assignments": [
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 1
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "G",
+                    "day": 1
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "J",
+                    "day": 1
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "B",
+                    "day": 2
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "J",
+                    "day": 2
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "G",
+                    "day": 2
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "C",
+                    "day": 3
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 3
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "B",
+                    "day": 3
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "J",
+                    "day": 3
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "G",
+                    "day": 3
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "C",
+                    "day": 4
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 4
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "B",
+                    "day": 4
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "J",
+                    "day": 4
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "G",
+                    "day": 4
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "C",
+                    "day": 5
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 5
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 5
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 5
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 5
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "C",
+                    "day": 6
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 6
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 6
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 6
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 6
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "qualification": "A",
+                    "day": 7
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 7
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 7
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 7
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 7
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "qualification": "A",
+                    "day": 8
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "E",
+                    "day": 8
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 8
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "J",
+                    "day": 8
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "qualification": "C",
+                    "day": 9
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "E",
+                    "day": 9
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "I",
+                    "day": 9
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 9
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "qualification": "A",
+                    "day": 10
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "D",
+                    "day": 10
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 10
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "I",
+                    "day": 10
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "J",
+                    "day": 10
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "qualification": "A",
+                    "day": 11
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "D",
+                    "day": 11
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 11
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "I",
+                    "day": 11
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "J",
+                    "day": 11
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 12
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "E",
+                    "day": 12
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "H",
+                    "day": 12
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "I",
+                    "day": 12
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 12
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 13
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "E",
+                    "day": 13
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "H",
+                    "day": 13
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 13
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 13
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 14
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "D",
+                    "day": 14
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "qualification": "H",
+                    "day": 14
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "G",
+                    "day": 14
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "G",
+                    "day": 14
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 15
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "D",
+                    "day": 15
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "H",
+                    "day": 15
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "G",
+                    "day": 15
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 16
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "E",
+                    "day": 16
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "H",
+                    "day": 16
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "G",
+                    "day": 16
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 17
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "qualification": "E",
+                    "day": 17
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "qualification": "H",
+                    "day": 17
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "D",
+                    "day": 17
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "qualification": "G",
+                    "day": 17
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "A",
+                    "day": 18
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "qualification": "E",
+                    "day": 18
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "B",
+                    "day": 18
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "qualification": "G",
+                    "day": 18
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "qualification": "E",
+                    "day": 18
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "A",
+                    "day": 19
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "qualification": "E",
+                    "day": 19
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "B",
+                    "day": 19
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "D",
+                    "day": 19
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "qualification": "G",
+                    "day": 19
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "A",
+                    "day": 20
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "E",
+                    "day": 20
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "B",
+                    "day": 20
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "D",
+                    "day": 20
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "E",
+                    "day": 20
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "A",
+                    "day": 21
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "E",
+                    "day": 21
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "B",
+                    "day": 21
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "D",
+                    "day": 21
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "E",
+                    "day": 21
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "E",
+                    "day": 22
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "D",
+                    "day": 22
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "F",
+                    "day": 22
+                }
+            ],
+            "projects": [
+                {
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "selected": true,
+                    "due_date": 20,
+                    "completion_day": 21,
+                    "late_days": 1,
+                    "is_late": true,
+                    "assigned_employees": [
+                        "Emma",
+                        "Olivia"
+                    ]
+                },
+                {
+                    "project_id": 1,
+                    "project_name": "Job2",
+                    "selected": false,
+                    "due_date": 16,
+                    "completion_day": 0,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": []
+                },
+                {
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "selected": true,
+                    "due_date": 12,
+                    "completion_day": 11,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Olivia"
+                    ]
+                },
+                {
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "selected": true,
+                    "due_date": 18,
+                    "completion_day": 17,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Olivia"
+                    ]
+                },
+                {
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "selected": true,
+                    "due_date": 10,
+                    "completion_day": 7,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Emma",
+                        "Liam",
+                        "Noah",
+                        "Olivia"
+                    ]
+                },
+                {
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "selected": true,
+                    "due_date": 16,
+                    "completion_day": 16,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Liam"
+                    ]
+                },
+                {
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "selected": true,
+                    "due_date": 20,
+                    "completion_day": 22,
+                    "late_days": 2,
+                    "is_late": true,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Liam",
+                        "Noah"
+                    ]
+                },
+                {
+                    "project_id": 7,
+                    "project_name": "Job8",
+                    "selected": false,
+                    "due_date": 22,
+                    "completion_day": 0,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": []
+                },
+                {
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "selected": true,
+                    "due_date": 18,
+                    "completion_day": 19,
+                    "late_days": 1,
+                    "is_late": true,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Emma",
+                        "Liam",
+                        "Noah"
+                    ]
+                },
+                {
+                    "project_id": 9,
+                    "project_name": "Job10",
+                    "selected": false,
+                    "due_date": 18,
+                    "completion_day": 0,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": []
+                },
+                {
+                    "project_id": 10,
+                    "project_name": "Job11",
+                    "selected": false,
+                    "due_date": 18,
+                    "completion_day": 0,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": []
+                },
+                {
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "selected": true,
+                    "due_date": 12,
+                    "completion_day": 11,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Emma"
+                    ]
+                },
+                {
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "selected": true,
+                    "due_date": 14,
+                    "completion_day": 13,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Noah"
+                    ]
+                },
+                {
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "selected": true,
+                    "due_date": 12,
+                    "completion_day": 4,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Noah"
+                    ]
+                },
+                {
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "selected": true,
+                    "due_date": 16,
+                    "completion_day": 16,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Emma",
+                        "Noah"
+                    ]
+                }
+            ],
+            "selected_project_count": 11,
+            "status": 2,
+            "status_name": "OPTIMAL",
+            "primary_objective_value": 413.0,
+            "optimality_proven": true,
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 75,
+                "late_projects": 15
+            },
+            "lexicographic_stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            }
+        },
+        {
+            "objective_selected": "financial",
+            "primary_solver_status": 2,
+            "secondary_solver_status": 2,
+            "objective_values": {
+                "financial": 400.0,
+                "completion": 135.0,
+                "relationships": 22.0,
+                "late_projects": 0.0
+            },
+            "assignments": [
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "B",
+                    "day": 1
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "G",
+                    "day": 1
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "G",
+                    "day": 1
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "B",
+                    "day": 2
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "J",
+                    "day": 2
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "J",
+                    "day": 2
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "C",
+                    "day": 3
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 3
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 3
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "G",
+                    "day": 3
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "G",
+                    "day": 3
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "C",
+                    "day": 4
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 4
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 4
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "J",
+                    "day": 4
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "qualification": "J",
+                    "day": 4
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "qualification": "A",
+                    "day": 5
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 5
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 5
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 5
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 5
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "C",
+                    "day": 6
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 6
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 6
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 6
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "J",
+                    "day": 6
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "C",
+                    "day": 7
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 7
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "B",
+                    "day": 7
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "qualification": "D",
+                    "day": 7
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "J",
+                    "day": 7
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "qualification": "A",
+                    "day": 8
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "D",
+                    "day": 8
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "I",
+                    "day": 8
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "J",
+                    "day": 8
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "qualification": "A",
+                    "day": 9
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "D",
+                    "day": 9
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 9
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 9
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "qualification": "A",
+                    "day": 10
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "E",
+                    "day": 10
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 10
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "I",
+                    "day": 10
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 10
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "qualification": "C",
+                    "day": 11
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "E",
+                    "day": 11
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "qualification": "H",
+                    "day": 11
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "I",
+                    "day": 11
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 11
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 12
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "E",
+                    "day": 12
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "H",
+                    "day": 12
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 12
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 12
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 13
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "D",
+                    "day": 13
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "H",
+                    "day": 13
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "I",
+                    "day": 13
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "qualification": "J",
+                    "day": 13
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 14
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "D",
+                    "day": 14
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "H",
+                    "day": 14
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "G",
+                    "day": 14
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "G",
+                    "day": 14
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 15
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "E",
+                    "day": 15
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "H",
+                    "day": 15
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "G",
+                    "day": 15
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 16
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "qualification": "E",
+                    "day": 16
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "qualification": "G",
+                    "day": 16
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "qualification": "A",
+                    "day": 17
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "E",
+                    "day": 17
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "B",
+                    "day": 17
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "D",
+                    "day": 17
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "E",
+                    "day": 17
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "A",
+                    "day": 18
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "E",
+                    "day": 18
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "B",
+                    "day": 18
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "D",
+                    "day": 18
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "F",
+                    "day": 18
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "A",
+                    "day": 19
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "D",
+                    "day": 19
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "B",
+                    "day": 19
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "D",
+                    "day": 19
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "E",
+                    "day": 19
+                },
+                {
+                    "employee_id": 0,
+                    "employee_name": "Olivia",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "A",
+                    "day": 20
+                },
+                {
+                    "employee_id": 1,
+                    "employee_name": "Liam",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "A",
+                    "day": 20
+                },
+                {
+                    "employee_id": 2,
+                    "employee_name": "Emma",
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "qualification": "B",
+                    "day": 20
+                },
+                {
+                    "employee_id": 3,
+                    "employee_name": "Noah",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "D",
+                    "day": 20
+                },
+                {
+                    "employee_id": 4,
+                    "employee_name": "Amelia",
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "qualification": "E",
+                    "day": 20
+                }
+            ],
+            "projects": [
+                {
+                    "project_id": 0,
+                    "project_name": "Job1",
+                    "selected": true,
+                    "due_date": 20,
+                    "completion_day": 20,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Emma",
+                        "Liam",
+                        "Olivia"
+                    ]
+                },
+                {
+                    "project_id": 1,
+                    "project_name": "Job2",
+                    "selected": false,
+                    "due_date": 16,
+                    "completion_day": 0,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": []
+                },
+                {
+                    "project_id": 2,
+                    "project_name": "Job3",
+                    "selected": true,
+                    "due_date": 12,
+                    "completion_day": 11,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Olivia"
+                    ]
+                },
+                {
+                    "project_id": 3,
+                    "project_name": "Job4",
+                    "selected": true,
+                    "due_date": 18,
+                    "completion_day": 17,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Olivia"
+                    ]
+                },
+                {
+                    "project_id": 4,
+                    "project_name": "Job5",
+                    "selected": true,
+                    "due_date": 10,
+                    "completion_day": 7,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Emma",
+                        "Liam",
+                        "Noah",
+                        "Olivia"
+                    ]
+                },
+                {
+                    "project_id": 5,
+                    "project_name": "Job6",
+                    "selected": true,
+                    "due_date": 16,
+                    "completion_day": 16,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Liam"
+                    ]
+                },
+                {
+                    "project_id": 6,
+                    "project_name": "Job7",
+                    "selected": true,
+                    "due_date": 20,
+                    "completion_day": 20,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Liam",
+                        "Noah"
+                    ]
+                },
+                {
+                    "project_id": 7,
+                    "project_name": "Job8",
+                    "selected": false,
+                    "due_date": 22,
+                    "completion_day": 0,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": []
+                },
+                {
+                    "project_id": 8,
+                    "project_name": "Job9",
+                    "selected": false,
+                    "due_date": 18,
+                    "completion_day": 0,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": []
+                },
+                {
+                    "project_id": 9,
+                    "project_name": "Job10",
+                    "selected": false,
+                    "due_date": 18,
+                    "completion_day": 0,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": []
+                },
+                {
+                    "project_id": 10,
+                    "project_name": "Job11",
+                    "selected": false,
+                    "due_date": 18,
+                    "completion_day": 0,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": []
+                },
+                {
+                    "project_id": 11,
+                    "project_name": "Job12",
+                    "selected": true,
+                    "due_date": 12,
+                    "completion_day": 11,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Emma"
+                    ]
+                },
+                {
+                    "project_id": 12,
+                    "project_name": "Job13",
+                    "selected": true,
+                    "due_date": 14,
+                    "completion_day": 13,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Noah"
+                    ]
+                },
+                {
+                    "project_id": 13,
+                    "project_name": "Job14",
+                    "selected": true,
+                    "due_date": 12,
+                    "completion_day": 4,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Noah"
+                    ]
+                },
+                {
+                    "project_id": 14,
+                    "project_name": "Job15",
+                    "selected": true,
+                    "due_date": 16,
+                    "completion_day": 16,
+                    "late_days": 0,
+                    "is_late": false,
+                    "assigned_employees": [
+                        "Amelia",
+                        "Emma",
+                        "Noah"
+                    ]
+                }
+            ],
+            "selected_project_count": 10,
+            "status": 2,
+            "status_name": "OPTIMAL",
+            "primary_objective_value": 400.0,
+            "optimality_proven": true,
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 75,
+                "late_projects": 0
+            },
+            "lexicographic_stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            }
+        }
+    ],
+    "attempts": [
+        {
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 75,
+                "late_projects": 15
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 75,
+                "late_projects": 8
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 75,
+                "late_projects": 0
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 38,
+                "late_projects": 15
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 38,
+                "late_projects": 8
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 38,
+                "late_projects": 0
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 0,
+                "late_projects": 15
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 0,
+                "late_projects": 8
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 330,
+                "relationships": 0,
+                "late_projects": 0
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 165,
+                "relationships": 75,
+                "late_projects": 15
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 165,
+                "relationships": 75,
+                "late_projects": 8
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 165,
+                "relationships": 75,
+                "late_projects": 0
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 165,
+                "relationships": 38,
+                "late_projects": 15
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 165,
+                "relationships": 38,
+                "late_projects": 8
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 165,
+                "relationships": 38,
+                "late_projects": 0
+            },
+            "stage_statuses": {
+                "financial": "OPTIMAL",
+                "completion": "OPTIMAL",
+                "relationships": "OPTIMAL",
+                "late_projects": "OPTIMAL"
+            },
+            "number_of_optimizations": 4,
+            "status": "SOLVED"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 165,
+                "relationships": 0,
+                "late_projects": 15
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 165,
+                "relationships": 0,
+                "late_projects": 8
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 165,
+                "relationships": 0,
+                "late_projects": 0
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 0,
+                "relationships": 75,
+                "late_projects": 15
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 0,
+                "relationships": 75,
+                "late_projects": 8
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 0,
+                "relationships": 75,
+                "late_projects": 0
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 0,
+                "relationships": 38,
+                "late_projects": 15
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 0,
+                "relationships": 38,
+                "late_projects": 8
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 0,
+                "relationships": 38,
+                "late_projects": 0
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 0,
+                "relationships": 0,
+                "late_projects": 15
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 0,
+                "relationships": 0,
+                "late_projects": 8
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        },
+        {
+            "epsilon_bounds": {
+                "completion": 0,
+                "relationships": 0,
+                "late_projects": 0
+            },
+            "stage_statuses": {
+                "financial": "INFEASIBLE"
+            },
+            "number_of_optimizations": 1,
+            "status": "INFEASIBLE"
+        }
+    ]
+}

@@ -1,0 +1,66 @@
+COMPUOPTI — LARGE DATASET: PARETO SUMMARY
+======================================================================
+Epsilon combinations checked: 27
+Feasible combinations: 11
+Infeasible combinations: 16
+Sampled nondominated solutions: 2
+
+Note: Financial = total gain of selected projects - late penalties.
+Completion = sum of completion-day values (not calendar duration).
+Relationships = distinct employee/project pairs.
+
+SOLUTION 1
+----------------------------------------------------------------------
+Net profit:         817.00
+Gross project gain: 835.00
+Late penalties:     18.00
+Completion score:   320
+Relationships:      50
+Late projects:      2
+Selected projects:  Job2, Job3, Job4, Job6, Job7, Job8, Job9, Job10, Job11, Job13, Job16, Job17, Job22, Job23, Job24, Job25, Job28
+Project details:
+  - Job2: finish day 23, late 1 day(s), employees: Liam, Noah, Olivia
+  - Job3: finish day 5, late 0 day(s), employees: Liam, Noah
+  - Job4: finish day 15, late 0 day(s), employees: Olivia
+  - Job6: finish day 14, late 0 day(s), employees: Emma, Liam, Noah, Olivia
+  - Job7: finish day 31, late 0 day(s), employees: Emma, Liam, Noah, Olivia
+  - Job8: finish day 4, late 0 day(s), employees: Amelia, Emma
+  - Job9: finish day 35, late 5 day(s), employees: Amelia, Liam, Noah, Oliver, Olivia
+  - Job10: finish day 20, late 0 day(s), employees: Amelia, Emma, Noah, Oliver, Olivia
+  - Job11: finish day 32, late 0 day(s), employees: Amelia, Olivia
+  - Job13: finish day 26, late 0 day(s), employees: Amelia, Liam, Noah
+  - Job16: finish day 36, late 0 day(s), employees: Amelia, Emma, Liam, Noah, Oliver
+  - Job17: finish day 18, late 0 day(s), employees: Amelia, Liam, Oliver
+  - Job22: finish day 11, late 0 day(s), employees: Emma, Noah
+  - Job23: finish day 28, late 0 day(s), employees: Amelia, Oliver
+  - Job24: finish day 4, late 0 day(s), employees: Noah, Oliver
+  - Job25: finish day 7, late 0 day(s), employees: Amelia, Emma, Noah
+  - Job28: finish day 11, late 0 day(s), employees: Amelia, Oliver
+
+SOLUTION 2
+----------------------------------------------------------------------
+Net profit:         800.00
+Gross project gain: 800.00
+Late penalties:     0.00
+Completion score:   279
+Relationships:      46
+Late projects:      0
+Selected projects:  Job1, Job3, Job4, Job6, Job7, Job8, Job9, Job10, Job13, Job16, Job17, Job22, Job23, Job24, Job25, Job28
+Project details:
+  - Job1: finish day 25, late 0 day(s), employees: Liam, Olivia
+  - Job3: finish day 5, late 0 day(s), employees: Liam, Noah
+  - Job4: finish day 15, late 0 day(s), employees: Olivia
+  - Job6: finish day 14, late 0 day(s), employees: Emma, Liam, Noah, Olivia
+  - Job7: finish day 32, late 0 day(s), employees: Amelia, Emma, Liam, Noah, Olivia
+  - Job8: finish day 4, late 0 day(s), employees: Amelia, Emma
+  - Job9: finish day 30, late 0 day(s), employees: Amelia, Liam, Oliver, Olivia
+  - Job10: finish day 20, late 0 day(s), employees: Amelia, Emma, Noah, Oliver, Olivia
+  - Job13: finish day 22, late 0 day(s), employees: Liam, Noah
+  - Job16: finish day 35, late 0 day(s), employees: Amelia, Emma, Liam, Noah
+  - Job17: finish day 18, late 0 day(s), employees: Amelia, Liam, Oliver
+  - Job22: finish day 11, late 0 day(s), employees: Emma, Noah
+  - Job23: finish day 26, late 0 day(s), employees: Amelia, Noah, Oliver
+  - Job24: finish day 4, late 0 day(s), employees: Noah, Oliver
+  - Job25: finish day 7, late 0 day(s), employees: Amelia, Emma, Noah
+  - Job28: finish day 11, late 0 day(s), employees: Amelia, Oliver
+

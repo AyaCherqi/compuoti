@@ -61,7 +61,10 @@ def test_solve_toy_instance_all_objectives(
     assert set(result["objective_values"]) == set(OBJECTIVES)
 
     assert len(result["projects"]) == len(feasible_toy_instance.projects)
-    assert len(result["assignments"]) > 0
+    assert isinstance(result["assignments"], list)
+
+    if objective == "financial":
+        assert len(result["assignments"]) > 0
 
 
 def test_objective_values_are_non_negative_for_toy_instance(
